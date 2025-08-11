@@ -1,0 +1,271 @@
+\documentclass[a4,10pt]{article}
+
+%%%%%%% --------------------------------------------------------------------------------------
+%%%%%%%  STARTING HERE, DO NOT TOUCH ANYTHING 
+%%%%%%% --------------------------------------------------------------------------------------
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+ \usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage{tabularx}
+\hypersetup{colorlinks=true,urlcolor=black}
+\usepackage[11pt]{moresize}
+\usepackage{setspace}
+\usepackage{fontspec}
+\usepackage[inline]{enumitem}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{anyfontsize}
+
+%%%% Set Margins
+\usepackage[margin=1cm, top=1cm]{geometry}
+
+%%%% Set Fonts
+\setmainfont[
+BoldFont=SourceSansPro-Semibold.otf, %SourceSansPro-Bold.otf
+ItalicFont=SourceSansPro-RegularIt.otf
+]{SourceSansPro-Regular.otf}
+\setsansfont{SourceSansPro-Semibold.otf}
+
+%%%% Set Page
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%%%% Set URL Style
+\urlstyle{same}
+
+%%%% Set Indentation
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+%%%% Set Secondary Color
+\definecolor{UI_blue}{RGB}{32, 64, 151}
+
+%%%% Define New Commands
+\usepackage[style=nature, maxbibnames=3]{biblatex}
+\addbibresource{Publications.bib}
+
+%%%% Bold Name in Publications
+\renewcommand*{\mkbibnamegiven}[1]{%
+\ifitemannotation{highlight}
+{\textbf{#1}}
+{#1}}
+
+\renewcommand*{\mkbibnamefamily}[1]{%
+\ifitemannotation{highlight}
+{\textbf{#1}}
+{#1}}
+
+%%%% Set Sections formatting
+\titleformat{\section}{
+\color{UI_blue} \scshape \raggedright \large 
+}{}{0em}{}[\vspace{-10pt} \hrulefill \vspace{-6pt}]
+
+%%%% Set Subtext Formatting
+\newcommand{\subtext}[1]{
+#1\par\vspace{-0.2cm}}
+
+% \newcommand{\subtextit}[1]{\vspace{0.15cm}
+% \textit{ #1 \vspace{-0.2cm}} }
+
+%%%% Set Item Spacing
+\setlist[itemize]{align=parleft,left=0pt..1em}
+
+%%%% New Itemize "Zitemize" Formatting - tighter spacing than itemize
+\newenvironment{zitemize}{
+\begin{itemize}\itemsep0pt \parskip0pt \parsep1pt}
+{\end{itemize}\vspace{-0.5cm}}
+
+
+%%%% Define Skills Bold Formatting
+\newcommand{\hskills}[1]{
+\textbf{\bfseries #1} }
+
+%%%% Set Subsection formatting
+\titleformat{\subsection}{\vspace{-0.1cm} 
+\bfseries \fontsize{11pt}{2cm}}{}{0em}{}[\vspace{-0.2cm}]
+
+%%%%%%% --------------------------------------------------------------------------------------
+%%%%%%% --------------------------------------------------------------------------------------
+%%%%%%%  END OF "DO NOT TOUCH" REGION
+%%%%%%% --------------------------------------------------------------------------------------
+%%%%%%% --------------------------------------------------------------------------------------
+
+% Toronto address! 123 Bay Street, Suite 400, Toronto, ON M5H 2R2
+
+
+\begin{document}
+%%%%%%% --------------------------------------------------------------------------------------
+%%%%%%%  HEADER
+%%%%%%% --------------------------------------------------------------------------------------
+
+\begin{center}
+    % Name and Role
+    {\Huge \textbf{Erfan Afshar}} \\[0.15cm]
+    {\color{UI_blue} \large \textit{Machine Learning Engineer}} \\[0.1cm]
+    
+    % Contact Information
+    \large
+    Montreal, QC \, | \,
+    \href{mailto:afshar.erfan@gmail.com}{afshar.erfan@gmail.com} \, | \,
+    \href{https://www.linkedin.com/in/erfan-afshar}{LinkedIn} \, | \,
+    \href{https://github.com/Erfanafshar}{GitHub} \, | \,
+    \href{https://erfanafshar.github.io}{Portfolio} 
+\end{center}
+
+
+%%%%%%% --------------------------------------------------------------------------------------
+%%%%%%%  Summary
+%%%%%%% --------------------------------------------------------------------------------------
+
+\section{Summary}
+\noindent
+\begin{minipage}{\textwidth}
+Java Software Developer with 4+ years of hands-on experience in object-oriented design, backend development, and multithreaded systems. Developed real-time multiplayer games, scalable download managers, and search engines using Java, Swing, and REST APIs. Familiar with Scala and functional programming concepts. Skilled in building maintainable, performant software using clean architecture principles and agile workflows.
+\end{minipage}
+
+
+%%%%%%% --------------------------------------------------------------------------------------
+%%%%%%%  EDUCATION
+%%%%%%% -------------------------------------------------------------------------------------
+
+\section{Education}
+\subsection*{Master of Applied Science, Computer Engineering, {\normalsize \normalfont Concordia University, Montreal (GPA: 3.9/4.3)} \hfill May 2022 --- Jan 2025} 
+\textit{Thesis: Anomaly detection and isolation in drones using enhanced LSTM models}
+
+\subsection*{Bachelor of Engineering, Computer Engineering, {\normalsize \normalfont Amirkabir University, Tehran  (GPA: 3.6/4)} \hfill Sep 2017 --- Aug 2021} 
+\textit{Selected Coursework: Data Mining, Artificial Intelligence, Computational Intelligence, Cloud Computing}
+
+
+%%%%%%% --------------------------------------------------------------------------------------
+%%%%%%%  EXPERIENCE
+%%%%%%% --------------------------------------------------------------------------------------
+
+\section{Experience}
+
+\subsection*{Data Analyst, {\normalsize\normalfont TELUS Digital, Montreal (Remote)} \hfill Jun 2025 --- present} 
+% \subtext{Concordia University \hfill Montreal} 
+    \begin{zitemize}
+        \item Analyzed and rated web search results based on relevance, language quality, and user intent to improve search engine algorithms.
+        \item Evaluated outputs from generative AI models including voice and text, providing detailed quality assessments and suggestions for improvement.
+        \item Verified factual accuracy of AI responses through cross-referencing with trusted sources across diverse domains.
+        \item Handled special evaluation tasks such as color differentiation, location-based photo validation, and intent classification.
+    \end{zitemize}
+
+    
+\subsection*{AI Automation Specialist, {\normalsize\normalfont CLT Solutions, Montreal} \hfill Jun 2025 --- present} 
+% \subtext{Concordia University \hfill Montreal} 
+    \begin{zitemize}
+        \item Designed and deployed an AI voice assistant using Twilio and OpenAI to take restaurant orders via phone in natural conversation.
+        \item Automated call handling, order logging, and customer data collection using N8N workflows and third-party integrations.
+        \item Built fallback systems for unclear AI interactions, including escalation triggers and human handoff options.
+        \item Created dynamic workflows for repeat customers with past order suggestions and personalized interactions.
+    \end{zitemize}
+    
+
+\subsection*{Research Assistant, {\normalsize\normalfont Concordia University, Montreal} \hfill May 2022 --- Jan 2025} 
+% \subtext{Concordia University \hfill Montreal} 
+    \begin{zitemize}
+        \item Developed two novel LSTM frameworks to detect and isolate cyberattacks (DoS, FDI, Replay) on drones, improving F1-score by 12\% over state-of-the-art.
+        \item Generated two datasets (50,000+ entries) via drone modeling and cyberattack simulation in MATLAB and Simulink.
+        \item Authored a 130-page thesis including architecture diagrams, benchmarks, and deployment strategies for cyber-resilient systems.
+        \item Contributed to weekly research meetings within a 15-member group by sharing updates, offering peer feedback, and supporting cross-project collaboration.
+        \item Designed a full ML pipeline to detect anomalies across a fleet of drones by independently processing each drone’s sensor data and identifying shared attack patterns.
+    \end{zitemize}
+
+
+\subsection*{Machine Learning Intern, {\normalsize\normalfont Amerandish, Tehran} \hfill Jul 2021 --- Jan 2022} 
+% \subtext{Concordia University \hfill Montreal} 
+    \begin{zitemize}
+        \item Built supervised ML models (classification and regression) using Python, Scikit-learn, and TensorFlow to predict user behavior trends, improving accuracy by 10\% over baseline models.
+        \item Implemented CNNs for image-based object classification and RNNs for time-series pattern recognition, achieving up to 85\% accuracy on internal evaluation datasets.
+        \item Processed user activity logs and sensor data using Pandas and NumPy, reducing preprocessing time by 30\%.
+    \end{zitemize}
+
+
+\subsection*{Software Developer Intern, {\normalsize\normalfont Qeshm Voltage, Tehran} \hfill Jun 2020 --- Sep 2020} 
+% \subtext{Concordia University \hfill Montreal} 
+    \begin{zitemize}
+        \item Developed Java-based REST APIs and microservices to automate workflows for robotic arm control, improving system responsiveness and maintainability.
+        \item Integrated low-level C/C++ modules with Java services to enable real-time data exchange with industrial sensors and actuators.
+        \item Contributed to a cross-functional engineering team by delivering scalable Java backend solutions that boosted automation reliability by 30 percent.
+    \end{zitemize}
+
+
+%%%%%%% --------------------------------------------------------------------------------------
+%%%%%%%  PROJECTS
+%%%%%%% --------------------------------------------------------------------------------------
+
+\section{Projects} 
+
+\subsection*{\normalsize
+\textbf{Face Retrieval Engine} 
+\href{https://github.com/Erfanafshar/face-Image-retrieval}{\normalfont\textit{(GitHub)}} 
+\hfill 2023}
+\begin{zitemize}
+    \item Technologies used: \textit{Python, Gensim, HTML, JavaScript}
+    \item Processed a dataset of 750,000 face images using MTCNN for detection and embedded them with FaceNet, ArcFace, and VGGFace.
+    \item Built a vector-based search engine with Gensim to retrieve similar faces, optimizing search efficiency by 30\%.
+    \item Developed a scalable backend pipeline in Python to clean, transform, and index image features for real-time querying.
+\end{zitemize}
+
+
+\subsection*{\normalsize
+\textbf{Art Gallery Auction Database System} 
+\href{https://github.com/Erfanafshar/picto-db-system}{\normalfont\textit{(GitHub)}} 
+\hfill 2022}
+    \begin{zitemize}
+        \item Technologies used: \textit{Python, MySQL, PostgreSQL}
+        \item Designed a relational database schema to manage 500+ artworks, 100+ auctions, and 200+ clients using MySQL and PostgreSQL.
+        \item Built SQL-based logic for bid tracking and winner selection, optimizing query time by 30\% with indexing and schema tuning.
+        \item Developed a command-line management interface in Python for real-time data access, updates, and reporting.
+    \end{zitemize}
+
+
+\subsection*{\normalsize
+\textbf{Document Retrieval \& Ranking System} 
+\href{https://github.com/Erfanafshar/document-search-engine}{\normalfont\textit{(GitHub)}} 
+\hfill 2021}
+    \begin{zitemize}
+        \item Technologies used: \textit{Java, NLP, TF-IDF, Cosine Similarity, Multithreading}
+        \item Built a large-scale document retrieval engine using Java to process, tokenize, and index text data for fast query response.
+        \item Applied NLP techniques such as stemming, stopword removal, and term weighting to enhance query relevance and precision.
+        \item Implemented TF-IDF and cosine similarity to rank documents, supporting both single and multi-word search queries.
+    \end{zitemize}
+
+
+%%%%%%% --------------------------------------------------------------------------------------
+%%%%%%%  SKILLS
+%%%%%%% --------------------------------------------------------------------------------------
+
+\section*{Skills}
+\textbf{Programming \& Scripting:} Python, Java, C, C++, SQL, JavaScript \\
+\textbf{Machine Learning:} TensorFlow, PyTorch, Scikit-learn, Pandas, NumPy, Keras \\
+\textbf{Web \& Tools:} HTML, CSS, REST APIs, Git, Docker \\
+\textbf{Data \& Databases:} MySQL, PostgreSQL, SQLite \\
+\textbf{Systems \& Simulation:} MATLAB, Simulink
+
+
+%%%%%%% --------------------------------------------------------------------------------------
+%%%%%%%  Additional Information
+%%%%%%% --------------------------------------------------------------------------------------
+
+\section*{Additional Information}
+\textbf{Achievements:} \$33,000 scholarship for master’s funding (2022–2023); \$5,000 Merit Scholarship for academic excellence (2022–2023) \\
+\textbf{Volunteer:} Support Staff, Concordia University (2024), assisted international students and reduced ISO staff workload \\
+\textbf{Languages:} English (Fluent), Persian/Farsi (Native), French (Intermediate)
+
+%%%%%%% ---------------------------- END DOC HERE ---------------------------- %%%%%%% 
+\end{document}
