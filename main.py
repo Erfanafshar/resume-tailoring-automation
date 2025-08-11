@@ -17,6 +17,15 @@ MODEL = "gpt-4o-mini"
 
 SECTION_NAMES = ["Summary", "Experience", "Projects", "Skills"]  # you already have this
 
+
+def choose_action():
+    while True:
+        choice = input("\n[a]ccept  [r]etry  [s]kip  [q]uit → ").strip().lower()
+        if choice in {"a","r","s","q"}:
+            return choice
+        print("please type a, r, s, or q")
+
+
 def find_section_span(latex_text, title):
     """Return (start_idx, end_idx, body) for a \section or \section* named title."""
     sec = re.compile(rf"\\section\*?\{{\s*{re.escape(title)}\s*\}}")
@@ -71,31 +80,44 @@ def yn(prompt="Accept? [y/N]: "):
     except EOFError:
         return False
 
-def tailor_one_section(latex_text, job_text, master_info_text, section_name="Summary"):
+
+def tailor_one_section(latex_text, job_text, master_info_text, section_name="Summary", max_retries=3):
     span = find_section_span(latex_text, section_name)
     if not span:
-        print(f"[warn] Section not found: {section_name}")
+        print(f"[warn] section not found: {section_name}")
         return latex_text
-    start, end, body = span
 
-    print(f"\n--- {section_name} (current) ---\n")
+    start, end, body = span
+    print(f"\n--- {section_name} current ---\n")
     print((body[:600] + "...") if len(body) > 600 else body)
 
-    proposal = rewrite_with_llm(job_text, section_name, body, master_info_text)
+    tries = 0
+    while True:
+        proposal = rewrite_with_llm(job_text, section_name, body, master_info_text)
+        print(f"\n--- {section_name} proposed ---\n")
+        print((proposal[:1000] + "...") if len(proposal) > 1000 else proposal)
 
-    print(f"\n--- {section_name} (proposed) ---\n")
-    print((proposal[:600] + "...") if len(proposal) > 600 else proposal)
+        action = choose_action()
 
-    if yn("\nApply this change? [y/N]: "):
-        new_tex = apply_replacement(latex_text, start, end, proposal)
-        print(f"[ok] {section_name} updated.")
-        return new_tex
-    else:
-        print(f"[skip] {section_name} unchanged.")
-        return latex_text
+        if action == "a":
+            new_tex = apply_replacement(latex_text, start, end, proposal)
+            print(f"[ok] {section_name} updated")
+            return new_tex
 
+        if action == "s":
+            print(f"[skip] {section_name} unchanged")
+            return latex_text
 
+        if action == "q":
+            print("[note] quitting without changes to this section")
+            return latex_text
 
+        # action == "r"
+        tries += 1
+        if tries >= max_retries:
+            print("[note] reached retry limit, leaving section unchanged")
+            return latex_text
+        print("[retry] generating a new proposal...")
 
 
 def parse_sections(latex_text):
@@ -147,14 +169,14 @@ def main():
     job_text = read_file(JOB_PATH)
     master_info = read_file(MASTER_INFO_PATH)
 
-    sections = parse_sections(resume_text)
-    print("\n=== Detected sections ===")
-    for k in SECTION_NAMES:
-        if k in sections:
-            preview = sections[k][:200].replace("\n", " ")
-            print(f"- {k}: {preview}...")
-        else:
-            print(f"- {k}: not found")
+    # sections = parse_sections(resume_text)
+    # print("\n=== Detected sections ===")
+    # for k in SECTION_NAMES:
+    #     if k in sections:
+    #         preview = sections[k][:200].replace("\n", " ")
+    #         print(f"- {k}: {preview}...")
+    #     else:
+    #         print(f"- {k}: not found")
 
 
     # Tailor just Summary first
