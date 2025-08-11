@@ -17,6 +17,8 @@ MODEL = "gpt-4o-mini"
 
 SECTION_NAMES = ["Summary", "Experience", "Projects", "Skills"]  # you already have this
 
+SECTION_ORDER = ["Summary", "Experience", "Projects", "Skills"]
+
 
 def choose_action():
     while True:
@@ -180,7 +182,13 @@ def main():
 
 
     # Tailor just Summary first
-    updated = tailor_one_section(resume_text, job_text, master_info, section_name="Summary")
+    # updated = tailor_one_section(resume_text, job_text, master_info, section_name="Summary")
+
+    # tailor ALL parts
+    updated = resume_text
+    for sec in SECTION_ORDER:
+        print(f"\n=== Tailoring {sec} ===")
+        updated = tailor_one_section(updated, job_text, master_info, section_name=sec)
 
     # Write output
     out_path = "data/resume_tailored.tex"
